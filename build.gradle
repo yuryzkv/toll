@@ -4,20 +4,27 @@ subprojects{
         mavenCentral()
         mavenLocal()
     }
+    dependencies {
+        // https://mvnrepository.com/artifact/junit/junit
+        testCompile group: 'junit', name: 'junit', version: '4.12'
+    }
 }
 
 project(':common'){
     dependencies {
         // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
         compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.7'
-
-        // https://mvnrepository.com/artifact/junit/junit
-        testCompile group: 'junit', name: 'junit', version: '4.12'
     }
 }
 
 project(':server-core'){
+    dependencies {
+        compile project(':common')
+    }
 }
 
 project(':tracker-core'){
+    dependencies {
+        compile project(':common')
+    }
 }
