@@ -23,9 +23,30 @@ project(':server-core'){
     }
 }
 
+apply plugin: 'com.github.johnrengelman.shadow'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:4.0.2'
+    }
+}
+
 project(':tracker-core'){
     apply plugin: 'java-library-distribution'
+
     dependencies {
         compile project(':common')
     }
+    task fatJar(type: Jar) {
+        manifest{
+            attributes 'Main-Class': 'jdev.tracker.Main'
+        }
+        baseName = 'all-in-one-jar'
+        from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+        with jar
+    }
+
 }
