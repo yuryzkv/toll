@@ -1,3 +1,2 @@
 include 'common'
-include 'server-core'
 include 'tracker-core'
