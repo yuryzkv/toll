@@ -19,33 +19,14 @@ project(':common'){
 }
 
 
-apply plugin: 'com.github.johnrengelman.shadow'
-
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.github.jengelman.gradle.plugins:shadow:4.0.2'
-    }
-}
-
 project(':tracker-core'){
     apply plugin: 'java-library-distribution'
-
     dependencies {
         compile project(':common')
         // https://mvnrepository.com/artifact/de.micromata.jak/JavaAPIforKml
         compile group: 'de.micromata.jak', name: 'JavaAPIforKml', version: '2.2.0'
+// https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-impl
+//        compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.0'
 
     }
-    task fatJar(type: Jar) {
-        manifest{
-            attributes 'Main-Class': 'jdev.tracker.Main'
-        }
-        baseName = 'all-in-one-jar'
-        from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-        with jar
-    }
-
 }
