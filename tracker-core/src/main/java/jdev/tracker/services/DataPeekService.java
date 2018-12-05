@@ -3,6 +3,7 @@ package jdev.tracker.services;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.micromata.opengis.kml.v_2_2_0.*;
+
 import jdev.dto.PointDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -64,9 +65,11 @@ public class DataPeekService {
 
     @PostConstruct
     public void init(){
-        if(pointList.size()==0){
+        if(pointList == null || pointList.size()==0){
             readTrack();
             pos=0;
+        }else {
+            pos = 0;
         }
     }
 
@@ -100,6 +103,7 @@ public class DataPeekService {
     public void savePoint(PointDTO pointDTO) throws IOException, InterruptedException {
         ObjectMapper mapper = new ObjectMapper();
         String toJson = mapper.writeValueAsString(pointDTO);
+        if(dataStoreService == null) dataStoreService = new DataStoreService();
         dataStoreService.savePoint(toJson);
     }
 
