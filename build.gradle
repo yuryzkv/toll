@@ -32,3 +32,28 @@ project(':tracker-core'){
 
     }
 }
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.15.RELEASE")
+    }
+}
+
+
+project(':server-core') {
+    apply plugin: 'org.springframework.boot'
+
+    dependencies {
+        compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+        compile("org.springframework.boot:spring-boot-devtools")
+        compile project(':common')
+        testCompile("org.springframework.boot:spring-boot-starter-test")
+
+    }
+}
+
+
+
