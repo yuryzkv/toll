@@ -1,4 +1,4 @@
-subprojects{
+subprojects {
     apply plugin: 'java'
     repositories {
         mavenCentral()
@@ -11,7 +11,7 @@ subprojects{
     }
 }
 
-project(':common'){
+project(':common') {
     dependencies {
         // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
         compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.7'
@@ -21,14 +21,14 @@ project(':common'){
 }
 
 
-project(':tracker-core'){
+project(':tracker-core') {
     apply plugin: 'java-library-distribution'
     dependencies {
         compile project(':common')
         // https://mvnrepository.com/artifact/de.micromata.jak/JavaAPIforKml
         compile group: 'de.micromata.jak', name: 'JavaAPIforKml', version: '2.2.0'
-// https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-impl
-//        compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.0'
+        // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter
+        compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.1.1.RELEASE'
 
     }
 }
@@ -54,6 +54,7 @@ project(':server-core') {
 
     }
 }
+
 
 
 
