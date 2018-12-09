@@ -21,8 +21,13 @@ public class AssumeController {
         ObjectMapper mapper = new ObjectMapper();
         String toJson = mapper.writeValueAsString(pointDTO);
         log.info("Assume PointDTO =>"+toJson);
-        response.setMessage("success");
-        response.setIsSuccess(true);
+        if(pointDTO.getTime() !=0){
+            response.setMessage("success");
+            response.setIsSuccess(true);
+        }else{
+            response.setMessage("false");
+            response.setIsSuccess(false);
+        }
         return response;
 
     }

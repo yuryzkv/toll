@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import de.micromata.opengis.kml.v_2_2_0.*;
 
 import jdev.dto.PointDTO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -23,8 +25,9 @@ import java.util.stream.Collectors;
 @Service
 public class DataPeekService {
 
-    private int pos;
+    private static final Logger log = LoggerFactory.getLogger(DataPeekService.class);
 
+    private int pos;
     private ArrayList<String> pointList;
 
     @Autowired
@@ -42,18 +45,18 @@ public class DataPeekService {
                     .map(Path::toFile)
                     .collect(Collectors.toList());
             for (File file : files) {
-                System.out.println("Trying to read kml file="+file.getName());
+                log.info("Trying to read kml file="+file.getName());
                 final Kml kml = Kml.unmarshal(file);
                 if (kml == null) {
-                    System.out.println("File " + file.getName() + " don't read");
+                    log.info("File " + file.getName() + " don't read");
                     continue;
                 }
                 final Placemark placemark = (Placemark) kml.getFeature();
                 Point point = (Point) placemark.getGeometry();
                 List<Coordinate> coordinates = point.getCoordinates();
-                System.out.println("count of coordinate="+coordinates.size());
+                log.info("count of coordinate="+coordinates.size());
                 for (Coordinate coordinate : coordinates) {
-                    System.out.println("lat=" + coordinate.getLatitude() +
+                    log.info("lat=" + coordinate.getLatitude() +
                             " lon=" + coordinate.getLongitude() +
                             " alt=" + coordinate.getAltitude());
                 }

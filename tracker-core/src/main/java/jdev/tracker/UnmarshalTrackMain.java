@@ -1,11 +1,20 @@
 package jdev.tracker;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+
+
+@SpringBootApplication
 public class UnmarshalTrackMain {
 
+//    public static void main(String... arg){
+//        ApplicationContext context = new AnnotationConfigApplicationContext(UnmarshalTrackContext.class);
+//    }
+
     public static void main(String... arg){
-        ApplicationContext context = new AnnotationConfigApplicationContext(UnmarshalTrackContext.class);
+        new SpringApplicationBuilder(UnmarshalTrackContext.class).web(false).run(arg);
     }
+
+
 }

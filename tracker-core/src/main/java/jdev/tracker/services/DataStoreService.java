@@ -2,6 +2,8 @@ package jdev.tracker.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jdev.dto.PointDTO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -11,6 +13,8 @@ import java.util.concurrent.TimeUnit;
 
 @Service
 public class DataStoreService {
+    
+    private static final Logger log = LoggerFactory.getLogger(DataStoreService.class);
 
     private static DataStoreService dataStoreService;
 
@@ -27,13 +31,13 @@ public class DataStoreService {
     public void savePoint(String json) throws IOException, InterruptedException {
         ObjectMapper mapper = new ObjectMapper();
         PointDTO pointDTO = mapper.readValue(json,PointDTO.class);
-        System.out.println("===> sending DTO to queue");
+        log.info("===> sending DTO to queue");
         queue.put(pointDTO);
     }
 
     public PointDTO getPoint() throws InterruptedException {
 //      PointDTO pointDTO = queue.take();
-        System.out.println("===> taking DTO from queue");
+        log.info("===> taking DTO from queue");
         PointDTO pointDTO = queue.poll(500,TimeUnit.MILLISECONDS);
         return pointDTO;
     }

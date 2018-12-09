@@ -23,12 +23,19 @@ project(':common') {
 
 project(':tracker-core') {
     apply plugin: 'java-library-distribution'
+    apply plugin: 'org.springframework.boot'
     dependencies {
         compile project(':common')
         // https://mvnrepository.com/artifact/de.micromata.jak/JavaAPIforKml
         compile group: 'de.micromata.jak', name: 'JavaAPIforKml', version: '2.2.0'
-        // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter
-        compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.1.1.RELEASE'
+
+        // compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest', version: '2.1.1.RELEASE'
+        compile("org.springframework.boot:spring-boot-starter-web") {
+            exclude group: 'org.slf4j', module: 'log4j-over-slf4j'
+            exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+        }
+
+        compile group: 'org.springframework.boot', name: 'spring-boot-starter-log4j', version: '1.3.8.RELEASE'
 
     }
 }
@@ -42,19 +49,22 @@ buildscript {
     }
 }
 
-
 project(':server-core') {
     apply plugin: 'org.springframework.boot'
 
     dependencies {
-        compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+        compile("org.springframework.boot:spring-boot-starter-thymeleaf"){
+            exclude group: 'org.slf4j', module: 'log4j-over-slf4j'
+            exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+
+        }
         compile("org.springframework.boot:spring-boot-devtools")
         compile project(':common')
         testCompile("org.springframework.boot:spring-boot-starter-test")
 
+        compile group: 'org.springframework.boot', name: 'spring-boot-starter-log4j', version: '1.3.8.RELEASE'
+
+
     }
 }
-
-
-
 
