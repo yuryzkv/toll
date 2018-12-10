@@ -23,8 +23,7 @@ public class DataSendService {
         PointDTO pointDTO = dataStoreService.getPoint();
         if(pointDTO != null) {
             if(pointA != null & pointB != null){
-                GeoLib geoLib = new GeoLib();
-                GeoData geoData = geoLib.getGeoData(pointA,pointB);
+                GeoData geoData = GeoLib.getGeoData(pointA,pointB);
                 System.out.println("==> dist(m),speed(m/s),azimut1(degree),azimut2(degree): "+geoData.getDistance()+","+
                                 geoData.getSpeed()+","+ geoData.getAzimut1()+","+geoData.getAzimut2());
                 pointA = null;
