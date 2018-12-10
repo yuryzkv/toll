@@ -6,7 +6,7 @@ import net.sf.geographiclib.GeodesicData;
 
 public class GeoLib {
 
-    public GeoData getGeoData(PointDTO a, PointDTO b) {
+    public static GeoData getGeoData(PointDTO a, PointDTO b) {
         GeodesicData geodesicData = Geodesic.WGS84.Inverse(a.getLat(), a.getLon(), b.getLat(), b.getLon());
         GeoData geoData = new GeoData();
         // the distance calculate in meters
