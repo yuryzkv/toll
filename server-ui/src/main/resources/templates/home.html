@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8"></meta>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
@@ -29,22 +29,25 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="#">Менеджеры</a>
-            <a class="dropdown-item" href="#">Клиенты</a>
+            <a class="dropdown-item" th:href="@{/manager}">Менеджеры</a>
+            <a class="dropdown-item" th:href="@{/client}">Клиенты</a>
           </div>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manager</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="#">Клиенты</a>
+            <a class="dropdown-item" th:href="@{/client}">Клиенты</a>
           </div>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Client</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="#">Маршруты</a>
-            <a class="dropdown-item" href="#">Платежи</a>
+            <a class="dropdown-item" th:href="@{/routes}">Маршруты</a>
+            <a class="dropdown-item" th:href="@{/payments}">Платежи</a>
           </div>
+        </li>
+        <li>
+        <a class="nav-link text-md-right text-sm-right" th:href="@{/login(logout)}" >Logout</a>
         </li>
       </ul>
     </nav>

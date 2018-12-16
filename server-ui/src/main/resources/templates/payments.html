@@ -2,13 +2,20 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"></meta>
-    <title>Title</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet"></link>
+    <!-- Custom styles for this template -->
+    <link href="/css/home.css" rel="stylesheet"></link>
+    <title>Платежи</title>
 </head>
 <body>
-<h1>Платежи</h1>
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="Выйти из системы"/>
-</form>
+<div class="container">
+    <div class="starter-template">
+        <h3>Информация о платежах</h3>
+        <a class="nav-link" th:href="@{/login(logout)}">Выйти из системы</a>
+        <a class="nav-link" th:href="@{/home}">Вернуться на главную</a>
+    </div>
+</div><!-- /.container -->
 
 </body>
 </html>
