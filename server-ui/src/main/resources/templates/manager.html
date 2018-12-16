@@ -2,12 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"></meta>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet"></link>
+    <!-- Custom styles for this template -->
+    <link href="/css/home.css" rel="stylesheet"></link>
     <title>Manager</title>
 </head>
 <body>
-
-<h1>Клиенты</h1>
-<p>Кликните <a th:href="@{/hello}">здесь</a>, для приветствия.</p>
-<p>Кликните <a th:href="@{/admin}">здесь</a>, если Вы - ADMIN.</p>
+<div class="container">
+    <div class="starter-template">
+        <h3>Страница для администраторов. Информация по менеджерам. Выполнение сервисных функций</h3>
+        <a class="nav-link" th:href="@{/login(logout)}">Выйти из системы</a>
+        <a class="nav-link" th:href="@{/home}">Вернуться на главную</a>
+    </div>
+</div><!-- /.container -->
 </body>
 </html>
