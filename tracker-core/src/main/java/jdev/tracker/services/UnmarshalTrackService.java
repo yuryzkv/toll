@@ -87,7 +87,6 @@ public class UnmarshalTrackService {
 
 
     public void unmarshal() throws XMLStreamException, ParseException {
-        UnmarshalTrackContext prop = new UnmarshalTrackContext();
         XMLInputFactory xif = XMLInputFactory.newFactory();
         log.info("pathTrack = " + pathTrack);
         StreamSource xml = new StreamSource(pathTrack);
