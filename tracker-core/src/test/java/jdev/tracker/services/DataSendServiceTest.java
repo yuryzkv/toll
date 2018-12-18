@@ -32,4 +32,6 @@ public class DataSendServiceTest {
         mockedService.sendPoint();
         assertFalse(response != null && response.getIsSuccess() == true);
     }
+
+
 }
