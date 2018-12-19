@@ -64,10 +64,8 @@ public class DataSendService {
             Response response = restTemplate.postForObject("http://localhost:8080/place", request, Response.class);
             if (response != null && response.getIsSuccess() == true) {
                 log.info("===> The object pointDTO has sent");
-                log.info("Response message => "+response.getMessage());
             } else {
                 log.info("===> The object pointDTO has't sent. Something error");
-                log.info("Response message => "+response.getMessage());
             }
 
         }
