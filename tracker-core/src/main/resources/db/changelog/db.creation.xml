@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="jdev" id="db.creation">
+        <sql>
+            create table PLACEMARK
+            (
+            PLACEMARK_ID int auto_increment primary key,
+            ROUTE_ID INTEGER not null,
+            LONGITUDE DOUBLE,
+            LATITUDE DOUBLE,
+            TIME BIGINT,
+            ROW_TIME TIMESTAMP(26,6)
+            )
+            ;
+            create table ROUTE
+            (
+            ROUTE_ID INTEGER default (NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_6349E037_FF6A_4550_8BAF_6285226A30A1)
+            primary key,
+            NAME VARCHAR(32) not null
+            )
+
+        </sql>
+    </changeSet>
+</databaseChangeLog>

@@ -2,7 +2,6 @@ package jdev.tracker;
 
 import jdev.tracker.services.DataSendService;
 import jdev.tracker.services.UnmarshalTrackService;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -11,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 @EnableScheduling
-@PropertySource("classpath:/app.properties")
+@PropertySource("classpath:/application.properties")
 public class UnmarshalTrackContext {
 
     @Bean

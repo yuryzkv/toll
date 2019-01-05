@@ -42,7 +42,6 @@ public class DataSendService {
         PointDTO pointDTO = dataStoreService.getPoint();
         if (pointDTO != null) {
             if (pointA != null & pointB != null) {
-//                GeoLib geoLib = new GeoLib();
                 GeoData geoData = GeoLib.getGeoData(pointA, pointB);
                 log.info("==> dist(m),speed(m/s),azimut1(degree),azimut2(degree): " + geoData.getDistance() + "," +
                         geoData.getSpeed() + "," + geoData.getAzimut1() + "," + geoData.getAzimut2());
@@ -57,8 +56,6 @@ public class DataSendService {
             String toJson = mapper.writeValueAsString(pointDTO);
             log.info("Sending object pointDTO =>" + toJson);
 
-
-            //RestTemplate restTemplate = new RestTemplate();
             HttpEntity request = new HttpEntity(pointDTO);
 
             Response response = restTemplate.postForObject("http://localhost:8080/place", request, Response.class);
