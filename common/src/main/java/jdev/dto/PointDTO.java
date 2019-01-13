@@ -7,7 +7,16 @@ public class PointDTO {
     private double lat;
     private double lon;
     private String autoId;
+    private String route_name;
     private long time;
+
+    public String getRoute_name() {
+        return route_name;
+    }
+
+    public void setRoute_name(String route_name) {
+        this.route_name = route_name;
+    }
 
     public double getLat() {
         return lat;

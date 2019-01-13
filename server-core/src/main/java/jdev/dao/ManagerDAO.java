@@ -1,4 +1,4 @@
-package jdev.storage.dao;
+package jdev.dao;
 
 import jdev.domain.Manager;
 import org.springframework.data.repository.CrudRepository;

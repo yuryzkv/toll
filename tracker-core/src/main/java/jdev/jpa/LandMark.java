@@ -1,4 +1,4 @@
-package jdev.tracker.services;
+package jdev.jpa;
 
 import javax.xml.bind.annotation.XmlElement;
 import java.text.ParseException;

@@ -1,14 +1,14 @@
-package jdev.storage;
+package jdev.domain;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name="client")
-public class Client {
+@Table(name="manager")
+public class Manager {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="CLIENT_ID")
-    public int client_id;
+    @Column(name="MANAGER_ID")
+    public int manager_id;
     @Column(name="SURNAME")
     public String surname;
     @Column(name="NAME")
@@ -17,15 +17,15 @@ public class Client {
     public String given_name;
     @Column(name="FIO")
     public String fio;
-    @Column(name="AUTO_ID")
-    public String auto_id;
+    @Column(name="SEAT")
+    public String seat;
 
-    public int getClient_id() {
-        return client_id;
+    public int getManager_id() {
+        return manager_id;
     }
 
-    public void setClient_id(int client_id) {
-        this.client_id = client_id;
+    public void setManager_id(int manager_id) {
+        this.manager_id = manager_id;
     }
 
     public String getSurname() {
@@ -60,11 +60,11 @@ public class Client {
         this.fio = fio;
     }
 
-    public String getAuto_id() {
-        return auto_id;
+    public String getSeat() {
+        return seat;
     }
 
-    public void setAuto_id(String auto_id) {
-        this.auto_id = auto_id;
+    public void setSeat(String seat) {
+        this.seat = seat;
     }
 }

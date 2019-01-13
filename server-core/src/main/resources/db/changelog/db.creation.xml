@@ -18,7 +18,7 @@
             ;
             create table CLIENT
             (
-            CLIENT_ID INT auto_increment primary key,
+            CLIENT_ID int auto_increment primary key,
             SURNAME VARCHAR(32),
             NAME VARCHAR(32),
             GIVEN_NAME VARCHAR(32),
@@ -28,8 +28,7 @@
             ;
             create table MANAGER
             (
-            MANAGER_ID INTEGER default (NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_420FD751_1ECA_454D_9FFC_1D85C7CF0C04)
-            primary key,
+            MANAGER_ID int auto_increment primary key,
             SURNAME VARCHAR(32),
             NAME VARCHAR(32),
             GIVEN_NAME VARCHAR(32),
@@ -39,9 +38,9 @@
             ;
             create table ROUTE
             (
-            ROUTE_ID INTEGER default (NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_6349E037_FF6A_4550_8BAF_6285226A30A1)
-            primary key,
-            NAME VARCHAR(32) not null
+            ROUTE_ID int auto_increment primary key,
+            NAME VARCHAR(32) not null,
+            ROUTE_DEVICE VARCHAR(32)
             )
 
         </sql>

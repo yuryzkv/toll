@@ -6,6 +6,7 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
     <changeSet author="jdev" id="db.creation">
         <sql>
+
             create table PLACEMARK
             (
             PLACEMARK_ID int auto_increment primary key,
@@ -18,9 +19,17 @@
             ;
             create table ROUTE
             (
-            ROUTE_ID INTEGER default (NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_6349E037_FF6A_4550_8BAF_6285226A30A1)
-            primary key,
-            NAME VARCHAR(32) not null
+            ROUTE_ID int auto_increment primary key,
+            NAME VARCHAR(32) not null,
+            ROUTE_DEVICE VARCHAR(32)
+            )
+            ;
+            create table POINT_INFO
+            (
+            POINT_INFO_ID int auto_increment primary key,
+            PLACEMARK_ID INTEGER,
+            ROUTE_ID INTEGER,
+            ROW_TIME TIMESTAMP(26,6)
             )
 
         </sql>
