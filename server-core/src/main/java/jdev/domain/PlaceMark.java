@@ -10,7 +10,7 @@ public class PlaceMark {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="PLACEMARK_ID")
-    public int placemark_id;
+    public int placeMarkId;
 
     @Column(name="ROUTE_ID")
     public int routeId;
@@ -23,12 +23,12 @@ public class PlaceMark {
     @Column(name="ROW_TIME")
     public Timestamp rowTime;
 
-    public int getPlacemark_id() {
-        return placemark_id;
+    public int getPlaceMarkId() {
+        return placeMarkId;
     }
 
-    public void setPlacemark_id(int placemark_id) {
-        this.placemark_id = placemark_id;
+    public void setPlaceMarkId(int placeMarkId) {
+        this.placeMarkId = placeMarkId;
     }
 
     public int getRouteId() {

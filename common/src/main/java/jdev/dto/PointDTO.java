@@ -9,6 +9,24 @@ public class PointDTO {
     private String autoId;
     private String route_name;
     private long time;
+    private int routeId;
+    private int placeMarkId;
+
+    public int getPlaceMarkId() {
+        return placeMarkId;
+    }
+
+    public void setPlaceMarkId(int placeMarkId) {
+        this.placeMarkId = placeMarkId;
+    }
+
+    public int getRouteId() {
+        return routeId;
+    }
+
+    public void setRouteId(int routeId) {
+        this.routeId = routeId;
+    }
 
     public String getRoute_name() {
         return route_name;

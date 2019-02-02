@@ -11,4 +11,6 @@ public interface PlaceMarkDAO extends CrudRepository<PlaceMark,Integer> {
 
     List<PlaceMark> findByLongitudeAndLatitudeAndTime(Double longitude,Double latitude,Long time);
 
+    List<PlaceMark> findTop10ByRouteIdOrderByRowTimeAsc(Integer routeId);
+
     }

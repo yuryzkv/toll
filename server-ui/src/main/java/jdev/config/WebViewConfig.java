@@ -19,8 +19,8 @@ public class WebViewConfig extends WebMvcConfigurerAdapter {
         reg.addViewController("/routes").setViewName("routes");
         reg.addViewController("/logout").setViewName("login");
         reg.addViewController("/home").setViewName("home");
-
-
+        reg.addViewController("/test").setViewName("test");
+        reg.addViewController("/landmark").setViewName("landmark");
 
 
     }

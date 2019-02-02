@@ -5,9 +5,10 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface RouteDAO extends CrudRepository<Route,Integer> {
+public interface RouteDAO extends CrudRepository<Route, Integer> {
 
     List<Route> findByNameAndRouteDevice(String name, String routeDevice);
 
+    List<Route> findTop10ByOrderByRouteIdAsc();
 
 }

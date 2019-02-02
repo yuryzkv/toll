@@ -7,10 +7,14 @@ import jdev.service.StoreService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.*;
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 public class AssumeController {
@@ -59,5 +63,44 @@ public class AssumeController {
             response.setIsSuccess(true);
         }
         return response;
+    }
+
+    @RequestMapping(value = "/allroutes", method = RequestMethod.GET)
+    public @ResponseBody ResponseEntity<Object> allRoutes(){
+        List<PointDTO> routes = storeService.getRoutes();
+        ResponseEntity<Object> responseEntity = new ResponseEntity<Object>(routes, HttpStatus.OK);
+        return responseEntity;
+    }
+
+    /*@RequestMapping(value = "/last/points/{routeId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getLastPointsByNumber(@PathVariable("routeId") int routeId, Model model){
+        List<PointDTO> placeMarks = storeService.getLastPoints(routeId);
+        log.info("placeMarks array size is "+placeMarks.size());
+        model.addAttribute("placeMarks",placeMarks);
+        return "jsonTemplate";
+    }*/
+
+    /*@RequestMapping(value = "/last/points/{routeId}", method = RequestMethod.POST)
+    public @ResponseBody ResponseEntity<Object> getLastPointsByNumber(@PathVariable("routeId") int routeId){
+        List<PointDTO> placeMarks = storeService.getLastPoints(routeId);
+        log.info("placeMarks array size is "+placeMarks.size());
+        ResponseEntity<Object> responseEntity = new ResponseEntity<Object>(placeMarks,HttpStatus.OK);
+        return responseEntity;
+    }*/
+
+    @RequestMapping(value = "/last/points/{routeId}", method = RequestMethod.GET)
+    public @ResponseBody List<PointDTO> getLastPointsByNumber(@PathVariable("routeId") int routeId) {
+        List<PointDTO> placeMarks = storeService.getLastPoints(routeId);
+        log.info("placeMarks array size is " + placeMarks.size());
+//        ResponseEntity<Object> responseEntity = new ResponseEntity<Object>(placeMarks,HttpStatus.OK);
+        return placeMarks;
+    }
+
+    @RequestMapping(value = "/routes",  produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    public String getAllRoutesJSON(Model model){
+        List<PointDTO> routes = storeService.getRoutes();
+        log.info("placeMarks array size is "+routes.size());
+        model.addAttribute("routes",routes);
+        return "jsonTemplate";
     }
 }

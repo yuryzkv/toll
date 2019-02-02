@@ -12,37 +12,38 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
-    protected void configure(HttpSecurity http  ) throws Exception{
+    protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
                     .antMatchers("/resources/**").permitAll()
                     .antMatchers("/error").authenticated()
                     .antMatchers("/", "/home").authenticated()
-                    .antMatchers("/client","/registerClient").hasAnyRole("MANAGER","ADMIN")
-                    .antMatchers("/manager","/registerManager").hasRole("ADMIN")
-                    .antMatchers("/payments","/routes").hasAnyRole("USER","ADMIN","MANAGER")
-                    .anyRequest().permitAll()
-                    .and()
-                .formLogin()
+                    .antMatchers("/client", "/registerClient").hasAnyRole("MANAGER", "ADMIN")
+                    .antMatchers("/manager", "/registerManager").hasRole("ADMIN")
+                    .antMatchers("/payments", "/routes").hasAnyRole("USER", "ADMIN", "MANAGER")
+                    .antMatchers("/test").hasAnyRole("USER", "ADMIN", "MANAGER")
+                .antMatchers("/landmark").hasAnyRole("USER", "ADMIN", "MANAGER")
+                .anyRequest().permitAll()
+                .and()
+                    .formLogin()
                     .loginPage("/login")
                     .permitAll()
-                    .and()
-                .logout()
+                .and()
+                    .logout()
                     .permitAll();
-
 
 
     }
 
     @Autowired
-    public void configureRole(AuthenticationManagerBuilder auth)throws Exception{
+    public void configureRole(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
-                    .withUser("user").password("password").roles("USER")
-                    .and()
-                    .withUser("manager").password("manager").roles("MANAGER","USER")
-                    .and()
-                    .withUser("root").password("secret").roles("ADMIN","MANAGER","USER");
+                .withUser("user").password("password").roles("USER")
+                .and()
+                .withUser("manager").password("manager").roles("MANAGER", "USER")
+                .and()
+                .withUser("root").password("secret").roles("ADMIN", "MANAGER", "USER");
 
     }
 }

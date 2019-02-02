@@ -1,6 +1,7 @@
 **/*.iml
 **/.*
 gradle/
+log-data/
 gradlew
 gradlew.bat
 !/.gitignore

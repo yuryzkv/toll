@@ -71,11 +71,16 @@ project(':server-ui') {
     apply plugin: 'org.springframework.boot'
 
     dependencies {
+        compile project(':common')
         compile("org.springframework.boot:spring-boot-starter-thymeleaf")
         compile("org.springframework.boot:spring-boot-starter-security")
         testCompile("junit:junit")
         testCompile("org.springframework.boot:spring-boot-starter-test")
         testCompile("org.springframework.security:spring-security-test")
+        // https://mvnrepository.com/artifact/net.sourceforge.nekohtml/nekohtml
+//        compile group: 'net.sourceforge.nekohtml', name: 'nekohtml', version: '1.9.22'
+        compile("net.sourceforge.nekohtml:nekohtml")
+
     }
 }
 
@@ -118,6 +123,10 @@ project(':tracker-core') {
         baseName = 'jpa-boot'
         version =  '0.1.0'
     }
+}
+
+project(':thread-issue'){
+    apply plugin: 'java'
 }
 
 
